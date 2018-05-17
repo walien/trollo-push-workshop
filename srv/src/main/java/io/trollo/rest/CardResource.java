@@ -5,11 +5,13 @@ import io.trollo.domain.State;
 import io.trollo.services.CardService;
 import restx.annotations.*;
 import restx.factory.Component;
+import restx.security.PermitAll;
 
 import java.util.Optional;
 
 @Component
 @RestxResource
+@PermitAll
 public class CardResource {
 
     private CardService service;

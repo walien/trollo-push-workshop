@@ -6,12 +6,14 @@ import restx.annotations.GET;
 import restx.annotations.POST;
 import restx.annotations.RestxResource;
 import restx.factory.Component;
+import restx.security.PermitAll;
 
 import java.time.Clock;
 import java.time.Instant;
 
 @Component
 @RestxResource
+@PermitAll
 public class InstantMessageResource {
 
     private Clock clock;
