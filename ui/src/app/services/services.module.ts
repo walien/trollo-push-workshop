@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardService } from './card.service';
 import { HttpClientModule } from '@angular/common/http';
+import { StompService } from './stomp.service';
+import { PushService } from './push.service';
 
 @NgModule({
     imports: [
@@ -10,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
     ],
     declarations: [],
     providers: [
+        StompService,
+        PushService,
         CardService
     ]
 })
