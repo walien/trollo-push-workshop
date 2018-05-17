@@ -9,7 +9,7 @@ import javax.inject.Named;
 @Component
 public class SequenceService {
 
-    private JongoCollection sequences;
+    private final JongoCollection sequences;
 
     public SequenceService(@Named("sequences") JongoCollection sequences) {
         this.sequences = sequences;

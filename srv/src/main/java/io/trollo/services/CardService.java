@@ -11,8 +11,8 @@ import java.util.Optional;
 @Component
 public class CardService {
 
-    private JongoCollection cards;
-    private SequenceService sequencesService;
+    private final JongoCollection cards;
+    private final SequenceService sequencesService;
 
     public CardService(@Named("cards") JongoCollection cards, SequenceService sequencesService) {
         this.cards = cards;

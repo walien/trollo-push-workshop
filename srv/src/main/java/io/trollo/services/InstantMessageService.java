@@ -9,7 +9,7 @@ import javax.inject.Named;
 @Component
 public class InstantMessageService {
 
-    private JongoCollection messages;
+    private final JongoCollection messages;
 
     public InstantMessageService(@Named("messages") JongoCollection messages) {
         this.messages = messages;
