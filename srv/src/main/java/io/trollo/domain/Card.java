@@ -2,7 +2,7 @@ package io.trollo.domain;
 
 import org.jongo.marshall.jackson.oid.MongoId;
 
-public class Card {
+public class Card implements Payload  {
 
     @MongoId
     private String id;

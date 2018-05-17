@@ -2,7 +2,7 @@ package io.trollo.domain;
 
 import java.time.Instant;
 
-public class InstantMessage {
+public class InstantMessage implements Payload {
 
     private Instant timestamp;
 
