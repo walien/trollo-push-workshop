@@ -1,0 +1,20 @@
+<div class="row" *ngIf="cards">
+
+    <div class="columns">
+        <h4>TODO</h4>
+        <card-tile *ngFor="let card of cards['TODO']" [card]="card"></card-tile>
+    </div>
+    <div class="columns">
+        <h4>IN PROGRESS</h4>
+        <card-tile *ngFor="let card of cards['IN_PROGRESS']" [card]="card"></card-tile>
+    </div>
+    <div class="columns">
+        <h4>VERIFIED</h4>
+        <card-tile *ngFor="let card of cards['VERIFIED']" [card]="card"></card-tile>
+    </div>
+    <div class="columns">
+        <h4>DELIVERED</h4>
+        <card-tile *ngFor="let card of cards['DELIVERED']" [card]="card"></card-tile>
+    </div>
+
+</div>
