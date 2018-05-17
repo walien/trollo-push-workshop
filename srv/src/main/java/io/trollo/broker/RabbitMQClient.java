@@ -1,7 +1,6 @@
 package io.trollo.broker;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.Maps;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
@@ -13,7 +12,6 @@ import restx.jackson.FrontObjectMapperFactory;
 
 import javax.inject.Named;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -31,40 +29,6 @@ public class RabbitMQClient implements MQClient {
     public RabbitMQClient(RabbitConnectionPool connectionPool, @Named(FrontObjectMapperFactory.MAPPER_NAME) ObjectMapper objectMapper) {
         this.connectionPool = connectionPool;
         this.objectMapper = objectMapper;
-    }
-
-    @Override
-    public Exchange declareExchange(Exchange exchange) {
-        try {
-            connectionPool.getChannel().exchangeDeclare(exchange.getName(), exchange.getType(), true, false, Maps.newHashMap());
-            logger.debug("Exchange {} declared", exchange.getName());
-        } catch (IOException e) {
-            logger.error(String.format("rabbitmq - unable to declare exchange %s", exchange.getName()), e);
-        }
-        return exchange;
-    }
-
-    @Override
-    public Queue declareQueue(Queue queue, Exchange exchange, String routingKey) {
-        Channel channel = connectionPool.getChannel();
-        try {
-            channel.queueDeclare(queue.getName(), false, false, true, Collections.emptyMap());
-            channel.queueBind(queue.getName(), exchange.getName(), routingKey);
-            logger.debug("Queue {} declared and bounded to exchange {}", queue.getName(), exchange.getName());
-        } catch (IOException e) {
-            logger.error(String.format("rabbitmq - unable to declare queue %s", queue.getName()), e);
-        }
-        return queue;
-    }
-
-    @Override
-    public void deleteQueue(Queue queue) {
-        Channel channel = connectionPool.getChannel();
-        try {
-            channel.queueDelete(queue.getName());
-        } catch (IOException e) {
-            logger.error(String.format("rabbitmq - unable to delete queue %s", queue.getName()), e);
-        }
     }
 
     @Override
