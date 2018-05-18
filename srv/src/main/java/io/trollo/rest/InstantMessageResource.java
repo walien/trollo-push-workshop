@@ -30,7 +30,7 @@ public class InstantMessageResource {
     }
 
     @POST("/message")
-    public InstantMessage findAll(InstantMessage message) {
+    public InstantMessage createMessage(InstantMessage message) {
         message.setTimestamp(Instant.now(clock));
         return service.createMessage(message);
     }
