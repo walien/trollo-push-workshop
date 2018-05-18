@@ -17,4 +17,9 @@
         <card-tile *ngFor="let card of cards['DELIVERED']" [card]="card"></card-tile>
     </div>
 
+    <div class="columns">
+        <h4>MESSAGES</h4>
+        <instant-messages-thread [messages]="messages" (messagePosted)="sendMessage($event)"></instant-messages-thread>
+    </div>
+
 </div>

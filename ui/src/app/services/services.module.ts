@@ -4,6 +4,7 @@ import { CardService } from './card.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StompService } from './stomp.service';
 import { PushService } from './push.service';
+import { InstantMessageService } from './instant-message.service';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { PushService } from './push.service';
     providers: [
         StompService,
         PushService,
-        CardService
+        CardService,
+        InstantMessageService
     ]
 })
 export class ServicesModule {

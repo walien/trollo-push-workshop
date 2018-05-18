@@ -1,0 +1,9 @@
+<div>
+    <div class="row">
+        <input type="text" [(ngModel)]="newMessageContent"/>
+        <button class="button round small" (click)="sendMessage(newMessageContent)">
+            OK
+        </button>
+    </div>
+    <instant-messages-tile *ngFor="let message of messages" [message]="message"></instant-messages-tile>
+</div>

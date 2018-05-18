@@ -1,5 +1,6 @@
 export interface InstantMessage {
 
-    timestamp: Date;
+    '@class'?: string;
+    timestamp?: Date;
     content: string;
 }

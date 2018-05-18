@@ -24,7 +24,7 @@ public class InstantMessageService {
     }
 
     public Iterable<InstantMessage> findAll() {
-        return messages.get().find().as(InstantMessage.class);
+        return messages.get().find().sort("{ timestamp: -1 }").limit(15).as(InstantMessage.class);
     }
 
     public InstantMessage createMessage(InstantMessage message) {
