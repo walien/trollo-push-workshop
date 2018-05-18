@@ -8,19 +8,14 @@ import restx.annotations.RestxResource;
 import restx.factory.Component;
 import restx.security.PermitAll;
 
-import java.time.Clock;
-import java.time.Instant;
-
 @Component
 @RestxResource
 @PermitAll
 public class InstantMessageResource {
 
-    private Clock clock;
     private InstantMessageService service;
 
-    public InstantMessageResource(Clock clock, InstantMessageService service) {
-        this.clock = clock;
+    public InstantMessageResource(InstantMessageService service) {
         this.service = service;
     }
 
@@ -31,7 +26,6 @@ public class InstantMessageResource {
 
     @POST("/message")
     public InstantMessage createMessage(InstantMessage message) {
-        message.setTimestamp(Instant.now(clock));
         return service.createMessage(message);
     }
 }
