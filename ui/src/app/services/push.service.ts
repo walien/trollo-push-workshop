@@ -17,10 +17,10 @@ export class PushService {
         this.connectToStomp().subscribe(connection => {
             this.subscribeExchange(connection, 'trollo.cards', '*')
                 .response
-                .subscribe(value => this.cardUpdated.next(value as Card));
+                .subscribe(value => this.cardUpdated.next(value.message as Card));
             this.subscribeExchange(connection, 'trollo.messages', '*')
                 .response
-                .subscribe(value => this.instantMessagePosted.next(value as InstantMessage));
+                .subscribe(value => this.instantMessagePosted.next(value.message as InstantMessage));
         });
     }
 
