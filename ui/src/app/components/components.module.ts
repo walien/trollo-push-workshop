@@ -5,11 +5,13 @@ import { InstantMessageTileComponent } from './instant-message-tile/instant-mess
 import { InstantMessagesThreadComponent } from './instant-messages-thread/instant-messages-thread.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { DashboardColumnComponent } from './dashboard-column/dashboard-column.component';
 
 const components: any = [
     CardTileComponent,
     InstantMessageTileComponent,
-    InstantMessagesThreadComponent
+    InstantMessagesThreadComponent,
+    DashboardColumnComponent
 ];
 
 @NgModule({

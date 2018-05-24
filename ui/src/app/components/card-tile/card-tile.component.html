@@ -1,4 +1,12 @@
 <div class="panel callout radius">
-  <h5>#{{ card?._id }} - {{ card?.title }}</h5>
-  <p>{{ card?.body }}</p>
+    <h5>#{{ card?._id }} - {{ card?.title }}</h5>
+    <p>{{ card?.body }}</p>
+    <div class="row">
+        <p class="columns action-button">
+            <button class="button secondary" (click)="previous(card)"> <</button>
+        </p>
+        <p class="columns action-button">
+            <button class="button secondary" (click)="next(card)"> ></button>
+        </p>
+    </div>
 </div>
