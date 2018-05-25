@@ -1,13 +1,10 @@
 <div>
-    <div class="row">
-        <div class="columns">
-            <input type="text" [(ngModel)]="newMessageContent"/>
+    <form (submit)="sendMessage(newMessageContent)">
+        <div class="row">
+            <div class="columns">
+                <input type="text" [(ngModel)]="newMessageContent" name="newMessageContent"/>
+            </div>
         </div>
-        <div>
-            <button class="button round small" (click)="sendMessage(newMessageContent)">
-                OK
-            </button>
-        </div>
-    </div>
+    </form>
     <instant-messages-tile *ngFor="let message of messages" [message]="message"></instant-messages-tile>
 </div>

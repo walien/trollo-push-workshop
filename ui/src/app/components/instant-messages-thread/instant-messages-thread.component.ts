@@ -14,7 +14,9 @@ export class InstantMessagesThreadComponent {
     public newMessageContent: string;
 
     public sendMessage(content: string) {
-        this.messagePosted.emit({content: content, '@class': 'io.trollo.domain.InstantMessage'});
-        this.newMessageContent = '';
+        if (content && content.length > 0) {
+            this.messagePosted.emit({content: content, '@class': 'io.trollo.domain.InstantMessage'});
+            this.newMessageContent = '';
+        }
     }
 }
