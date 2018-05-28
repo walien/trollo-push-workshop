@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CardService } from '../../services/card.service';
 import * as _ from 'lodash';
 import { map } from 'rxjs/operators';
-import { PushService } from '../../services/push.service';
 import { InstantMessageService } from '../../services/instant-message.service';
 import { InstantMessage } from '../../domain/instant-message.model';
+import { StompService } from '../../services/stomp.service';
 
 @Component({
     selector: 'dashboard',
@@ -18,14 +18,25 @@ export class DashboardComponent implements OnInit {
 
     constructor(private cardService: CardService,
                 private instantMessageService: InstantMessageService,
-                private pushService: PushService) {
-    }
+                private stompService: StompService) {}
 
     ngOnInit(): void {
+        this.subscribeToPushServices();
         this.fetchCards();
         this.fetchMessages();
-        this.pushService.cardUpdated.subscribe(card => this.fetchCards());
-        this.pushService.instantMessagePosted.subscribe(message => this.fetchMessages());
+    }
+
+    private subscribeToPushServices() {
+        const config = {
+            url: 'http://127.0.0.1:15674/stomp',
+            login: 'guest',
+            password: 'guest',
+            enabled: true
+        };
+        this.stompService.connect(config).subscribe(connection => {
+            connection.subscribeExchange('trollo.cards').response.subscribe(payload => this.fetchCards());
+            connection.subscribeExchange('trollo.messages').response.subscribe(payload => this.fetchMessages());
+        });
     }
 
     private fetchCards() {

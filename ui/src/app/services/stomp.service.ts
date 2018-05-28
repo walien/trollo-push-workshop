@@ -33,7 +33,7 @@ export class StompConnection {
 
     constructor(private stomp: any) { }
 
-    public subscribe(exchange: string, routingKey: string = '*'): StompSubscription {
+    public subscribeExchange(exchange: string, routingKey: string = '*'): StompSubscription {
         const responseObservable = new Subject<StompResponse>();
         console.log(`subscribing exchange ${exchange} (routingKey = ${routingKey})`);
         const subscription = this.stomp.subscribe(`/exchange/${exchange}/${routingKey}`, response => {

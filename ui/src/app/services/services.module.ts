@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CardService } from './card.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StompService } from './stomp.service';
-import { PushService } from './push.service';
 import { InstantMessageService } from './instant-message.service';
 
 @NgModule({
@@ -14,7 +13,6 @@ import { InstantMessageService } from './instant-message.service';
     declarations: [],
     providers: [
         StompService,
-        PushService,
         CardService,
         InstantMessageService
     ]
