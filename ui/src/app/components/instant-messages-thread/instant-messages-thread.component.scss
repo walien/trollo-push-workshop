@@ -1,0 +1,13 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    border: 1px solid red;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.highlighted {
+  animation: fadeIn 1s forwards;
+}

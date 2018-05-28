@@ -6,5 +6,8 @@
             </div>
         </div>
     </form>
-    <instant-messages-tile *ngFor="let message of messages" [message]="message"></instant-messages-tile>
+
+    <div *ngFor="let message of messages; let first = first;" [class.highlighted]="first">
+        <instant-messages-tile [message]="message"></instant-messages-tile>
+    </div>
 </div>
