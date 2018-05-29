@@ -1,6 +1,5 @@
 package io.trollo.services;
 
-import io.trollo.broker.Exchange;
 import io.trollo.broker.MQClient;
 import io.trollo.domain.Card;
 import io.trollo.domain.State;
@@ -35,7 +34,7 @@ public class CardService {
     }
 
     private void publishCardChange(Card card) {
-        mqClient.publish(Exchange.byName("trollo.cards", "topic"), "*", card);
+        mqClient.publish("trollo.cards", "*", card);
     }
 
     public Optional<Card> updateCard(String id, Card card) {

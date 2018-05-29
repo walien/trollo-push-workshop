@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { InstantMessageService } from '../../services/instant-message.service';
 import { InstantMessage } from '../../domain/instant-message.model';
 import { StompService } from '../../services/stomp.service';
+import { Card } from '../../domain/card.model';
 
 @Component({
     selector: 'dashboard',
@@ -13,7 +14,7 @@ import { StompService } from '../../services/stomp.service';
 })
 export class DashboardComponent implements OnInit {
 
-    public cards: { [index: string]: any };
+    public cards: { [state: string]: Card[] };
     public messages: InstantMessage[];
 
     constructor(private cardService: CardService,

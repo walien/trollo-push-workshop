@@ -1,6 +1,5 @@
 package io.trollo.services;
 
-import io.trollo.broker.Exchange;
 import io.trollo.broker.MQClient;
 import io.trollo.domain.InstantMessage;
 import restx.factory.Component;
@@ -30,7 +29,7 @@ public class InstantMessageService {
     public InstantMessage createMessage(InstantMessage message) {
         message.setTimestamp(Instant.now(clock));
         messages.get().insert(message);
-        mqClient.publish(Exchange.byName("trollo.messages", "topic"), "*", message);
+        mqClient.publish("trollo.messages", "*", message);
         return message;
     }
 }
