@@ -8,6 +8,8 @@ public class InstantMessage implements Payload {
 
     private String content;
 
+    private String author;
+
     public Instant getTimestamp() {
         return timestamp;
     }
@@ -23,6 +25,15 @@ public class InstantMessage implements Payload {
 
     public InstantMessage setContent(String content) {
         this.content = content;
+        return this;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public InstantMessage setAuthor(String author) {
+        this.author = author;
         return this;
     }
 }

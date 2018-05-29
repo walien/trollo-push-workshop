@@ -1,4 +1,5 @@
 <div class="panel callout radius instant-message-tile">
     <h5>{{ message?.timestamp | date: 'd/M/yy, HH:mm:ss' }}</h5>
+    <p>from {{ message?.author }}</p>
     <p>{{ message?.content }}</p>
 </div>

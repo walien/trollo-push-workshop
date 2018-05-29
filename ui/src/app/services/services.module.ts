@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CardService } from './card.service';
 import { HttpClientModule } from '@angular/common/http';
 import { InstantMessageService } from './instant-message.service';
+import { RandomService } from './random.service';
 
 @NgModule({
     imports: [
@@ -11,6 +12,7 @@ import { InstantMessageService } from './instant-message.service';
     ],
     declarations: [],
     providers: [
+        RandomService,
         CardService,
         InstantMessageService
     ]
