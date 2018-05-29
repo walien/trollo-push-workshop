@@ -1,6 +1,6 @@
 <div class="columns">
     <h4>{{ title }}</h4>
     <div class="row" *ngFor="let card of cards" >
-        <card-tile [card]="card"></card-tile>
+        <card-tile [card]="card" (cardChange)="cardChange.emit($event)"></card-tile>
     </div>
 </div>

@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
         this.fetchMessages();
     }
 
-    private fetchCards() {
+    public fetchCards() {
         this.cardService.fetchAll()
             .pipe(map(cards => _.groupBy(cards, card => card.state)))
             .subscribe(cards => this.cards = cards);
@@ -34,8 +34,6 @@ export class DashboardComponent implements OnInit {
     }
 
     public sendMessage(message: InstantMessage) {
-        this.instantMessageService.send(message).subscribe(() => {
-            // nothing to do
-        });
+        this.instantMessageService.send(message).subscribe(() => this.fetchMessages());
     }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Card } from '../../domain/card.model';
 
 @Component({
@@ -10,5 +10,6 @@ export class DashboardColumnComponent {
 
     @Input() public cards: Card[];
     @Input() public title: string;
+    @Output() public cardChange = new EventEmitter<Card>();
 
 }

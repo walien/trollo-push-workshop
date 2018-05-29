@@ -1,16 +1,16 @@
 <div class="row" *ngIf="cards">
 
     <div class="columns">
-        <dashboard-column [cards]="cards['TODO']" title="TODO"></dashboard-column>
+        <dashboard-column [cards]="cards['TODO']" title="TODO" (cardChange)="fetchCards()"></dashboard-column>
     </div>
     <div class="columns">
-        <dashboard-column [cards]="cards['IN_PROGRESS']" title="PROGRESS"></dashboard-column>
+        <dashboard-column [cards]="cards['IN_PROGRESS']" title="PROGRESS" (cardChange)="fetchCards()"></dashboard-column>
     </div>
     <div class="columns">
-        <dashboard-column [cards]="cards['VERIFIED']" title="VERIFIED"></dashboard-column>
+        <dashboard-column [cards]="cards['VERIFIED']" title="VERIFIED" (cardChange)="fetchCards()"></dashboard-column>
     </div>
     <div class="columns">
-        <dashboard-column [cards]="cards['DELIVERED']" title="DELIVERED"></dashboard-column>
+        <dashboard-column [cards]="cards['DELIVERED']" title="DELIVERED" (cardChange)="fetchCards()"></dashboard-column>
     </div>
 
     <div class="columns">
