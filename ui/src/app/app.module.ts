@@ -6,6 +6,8 @@ import { PagesModule } from './pages/pages.module';
 import { ComponentsModule } from './components/components.module';
 import { RoutingModule } from './routing.module';
 import { ServicesModule } from './services/services.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     imports: [
@@ -13,7 +15,11 @@ import { ServicesModule } from './services/services.module';
         RoutingModule,
         PagesModule,
         ComponentsModule,
-        ServicesModule
+        ServicesModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot({
+            positionClass: 'toast-bottom-right'
+        })
     ],
     providers: [],
     declarations: [AppComponent],
