@@ -1,6 +1,5 @@
 package io.trollo.services;
 
-import io.trollo.broker.MQClient;
 import io.trollo.domain.InstantMessage;
 import restx.factory.Component;
 import restx.jongo.JongoCollection;
@@ -14,12 +13,10 @@ public class InstantMessageService {
 
     private final JongoCollection messages;
     private final Clock clock;
-    private final MQClient mqClient;
 
-    public InstantMessageService(@Named("messages") JongoCollection messages, Clock clock, MQClient mqClient) {
+    public InstantMessageService(@Named("messages") JongoCollection messages, Clock clock) {
         this.clock = clock;
         this.messages = messages;
-        this.mqClient = mqClient;
     }
 
     public Iterable<InstantMessage> findAll() {
@@ -29,7 +26,6 @@ public class InstantMessageService {
     public InstantMessage createMessage(InstantMessage message) {
         message.setTimestamp(Instant.now(clock));
         messages.get().insert(message);
-        mqClient.publish("trollo.messages", "*", message);
         return message;
     }
 }
